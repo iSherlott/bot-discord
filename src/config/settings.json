@@ -1,0 +1,32 @@
+{
+  "developers": "989526920892940288",
+  "channelCommand": "996194440710467705",
+  "target": "608826751501598730",
+  "modoDev": true,
+  "client": {
+    "welcome": {
+      "container": "bots",
+      "networks": "localhost",
+      "name": "welcome",
+      "clientID": "829092026557136976",
+      "TOKEN": "INSERT_YOUR_TOKEN_HERE",
+      "PREFIX": "!"
+    }
+  },
+  "minecraft": {
+    "baseURL": "jogar.runeforger.com",
+    "version": "1.12 - 1.19.3"
+  },
+  "api": {
+    "baseURL": "localhost:9000",
+    "URL": "localhost",
+    "port": 9000,
+    "secret": ""
+  },
+  "jobs": {
+    "updateServerCount": {
+      "schedule": "0 */10 * * * *",
+      "log": false
+    }
+  }
+}

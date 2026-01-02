@@ -1,12 +1,12 @@
 import axios from "axios";
 
-import varcharGlobal from "./varGlobal";
 
-const TOKEN = varcharGlobal.TOKEN;
+const TOKEN = process.env.APIKEY || (() => { throw new Error("API Key is required") })();
+const URL = process.env.APIURL || (() => { throw new Error("API URL is required") })();
 
 export async function request(method: string, tarjet: string, data: any) {
 
-    let url = `http://localhost:9000/${tarjet}`
+    let url = `${URL}/${tarjet}`
 
     if (method == "get") url += `?${Object.keys(data)[0]}=${Object.values(data)[0]}`
 

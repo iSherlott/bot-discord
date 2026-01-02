@@ -37,9 +37,10 @@ export const event: Event = {
                 channel.send({ embeds: [goodbyembed], files: [attachment] }).then(() => {
                     console.log(`Member left ${id.user.username}`);
 
-                    request("delete", "user/disable", {
-                        id: id.user.id
-                    })
+                    // Comando temporariamente desativado.
+                    // request("delete", "user/disable", {
+                    //     id: id.user.id
+                    // })
                 })
             })
         } catch (error) {

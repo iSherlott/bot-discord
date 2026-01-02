@@ -4,21 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prod": "node dist/bots.js",
+    "start": "node dist/src/index.js",
     "dev": "tsc-watch --onSuccess \"nodemon ./dist/src/index.js\"",
-    "build": "tsc --watch"
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json"
   },
   "keywords": [],
   "author": "Sherlott Silva",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
-    "concurrently": "^7.2.2",
+    "axios": "^1.7.9",
     "discord.js": "^13.8.1",
-    "jimp": "^0.16.1",
+    "dotenv": "^16.4.5",
+    "jimp": "^0.16.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2",
     "nodemon": "^2.0.19",
-    "pm2": "^5.2.2",
-    "tsc": "^2.0.4",
     "tsc-watch": "^5.0.3",
     "typescript": "^4.9.5"
   }

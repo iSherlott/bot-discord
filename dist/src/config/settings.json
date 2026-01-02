@@ -1,0 +1,33 @@
+{
+    "developers": "989526920892940288",
+    "channelCommand": "996194440710467705",
+    "channelCommandDev": "995341023121264741",
+    "target": "608826751501598730",
+    "modoDev": true,
+    "client": {
+        "welcome": {
+            "container": "bots",
+            "networks": "localhost",
+            "name": "welcome",
+            "clientID": "829092026557136976",
+            "TOKEN": "",
+            "PREFIX": "!"
+        }
+    },
+    "minecraft": {
+        "baseURL": "sherlott.cf",
+        "version": "1.19.4"
+    },
+    "api": {
+        "baseURL": "https://localhost:7213",
+        "URL": "localhost",
+        "port": 7213,
+        "secret": ""
+    },
+    "jobs": {
+        "updateServerCount": {
+            "schedule": "0 */10 * * * *",
+            "log": false
+        }
+    }
+}

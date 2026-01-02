@@ -1,9 +1,9 @@
-import { request } from "../../services/request";
-import { Command } from "../../interfaces";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.slash = void 0;
+const request_1 = require("../../services/request");
 const sendMenssageDM = require("../../helpers/embed_DM_message_with_gif");
-
-export const slash: Command = {
+exports.slash = {
     name: 'kill',
     description: 'Desconecta um usuário do servidor, Recomendo desconectar sempre que for necessário.',
     testOnly: false,
@@ -16,27 +16,20 @@ export const slash: Command = {
         }
     ],
     run: async ({ client, interaction }) => {
-        if (1+1==2) return interaction.followUp({ content: "Comando temporariamente desativado." });
-        
         try {
             const target = interaction.options.getUser('target');
-
-            if (!target) return interaction.followUp({ content: `Usuário não encontrado.` })
-
-            const coins = await request("get", `wallet/${interaction.user.id}`, {});
-
-            if (coins["data"] < 200) return interaction.followUp({ content: `Será necessario 200 Sugar para efetuar esse comando.` })
-
+            if (!target)
+                return interaction.followUp({ content: `Usuário não encontrado.` });
+            const coins = await (0, request_1.request)("get", `wallet/${interaction.user.id}`, {});
+            if (coins["data"] < 200)
+                return interaction.followUp({ content: `Será necessario 200 Sugar para efetuar esse comando.` });
             const user = client.guilds.cache.map((e) => e.members.cache.get(target.id));
-
             if (!user[0]) {
                 return interaction.followUp({ content: `Infelizmente o usuário não está em nenhuma call` });
             }
-
             try {
-                if (user[0]!["voice"]["channelId"]) {
-                    user[0]!["voice"].setChannel(null);
-
+                if (user[0]["voice"]["channelId"]) {
+                    user[0]["voice"].setChannel(null);
                     // sendMenssageDM(
                     //     client,
                     //     target.id,
@@ -47,18 +40,17 @@ export const slash: Command = {
                     //     "disconnect",
                     //     "#B8B8F3"
                     // );
-
-                    await request("put", `wallet/subcoin/${interaction.user.id}`, { "value": 200 });
+                    await (0, request_1.request)("put", `wallet/subcoin/${interaction.user.id}`, { "value": 200 });
                     return interaction.followUp({ content: `O usuário foi desconectado com sucesso.` });
                 }
-            } catch (error) {
+            }
+            catch (error) {
                 return interaction.followUp({ content: `O usuário foi desconectado com sucesso, só não consegui informa ele sobre o ocorrido.` });
             }
-
             return interaction.followUp({ content: `Unexpected Error` });
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error);
-
             return interaction.followUp({ content: `Internal Error` });
         }
     },
